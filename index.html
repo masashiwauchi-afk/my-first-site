@@ -42,6 +42,14 @@
             align-items: center;
             justify-content: center;
             font-size: 40px;
+            overflow: hidden; /* ① 枠からはみ出た写真の四隅をカットする */
+        }
+        
+        /* ② 写真自体が綺麗に枠に収まるようにする設定（新規追加） */
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 縦横比を維持したまま、100px×100pxの円に綺麗に収めます */
         }
         h1 {
             font-size: 24px;

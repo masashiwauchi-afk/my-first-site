@@ -87,7 +87,32 @@
             font-size: 14px;
             font-weight: 500;
         }
-
+        /* ギャラリー用CSS */
+        .food-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .food-card {
+            background: #fff;
+            border: 1px solid #edf2f7;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .food-card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+        .food-caption {
+            font-size: 11px;
+            color: #6c757d;
+            padding: 6px 4px;
+        }
+        
         /* 作ったアプリ（リスト風） */
         .app-list {
             list-style: none;
@@ -187,6 +212,21 @@
                 <span class="tag">グルメ</span>
             </div>
         </section>
+        <!-- 好きなものセクション内にギャラリーを追加 -->
+        <div class="food-gallery">
+            <div class="food-card">
+                <img src="ramen1.jpg" alt="家系ラーメン">
+                <p class="food-caption">濃厚豚骨醤油ラーメン（横浜）</p>
+            </div>
+            <div class="food-card">
+                <img src="ramen2.jpg" alt="塩ラーメン">
+                <p class="food-caption">あっさり透き通る塩ラーメン（東京）</p>
+           </div>
+            <div class="food-card">
+                <img src="ramen3.jpg" alt="塩ラーメン">
+                <p class="food-caption">あっさり透き通る塩ラーメン（東京）</p>
+            </div>
+        </div>
 
         <section>
             <h2>今までに作ったプログラム</h2>

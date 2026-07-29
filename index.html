@@ -11,12 +11,16 @@
             margin: 0;
             padding: 0;
         }
+        html {
+            scroll-behavior: smooth; /* スムーススクロールをCSSで有効化 */
+        }
         body {
             font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
             line-height: 1.6;
             color: #333333;
             background-color: #f8f9fa;
             padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .container {
             max-width: 600px;
@@ -25,12 +29,15 @@
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         /* ヘッダー・名前 */
         header {
             text-align: center;
             margin-bottom: 40px;
+            position: relative;
         }
         .avatar {
             width: 100px;
@@ -43,6 +50,7 @@
             justify-content: center;
             font-size: 40px;
             overflow: hidden;
+            transition: background-color 0.3s ease;
         }
         .avatar img {
             width: 100%;
@@ -53,11 +61,32 @@
             font-size: 24px;
             color: #2b3a4a;
             font-weight: 700;
+            transition: color 0.3s ease;
         }
         .tagline {
             font-size: 14px;
             color: #6c757d;
             margin-top: 5px;
+            transition: color 0.3s ease;
+        }
+
+        /* ダークモード切替ボタン */
+        .theme-toggle-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #e9ecef;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #495057;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .theme-toggle-btn:hover {
+            background: #dee2e6;
         }
 
         /* 各セクション */
@@ -71,6 +100,7 @@
             padding-left: 10px;
             margin-bottom: 15px;
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         /* 好きなもの（タグ風） */
@@ -86,6 +116,7 @@
             border-radius: 20px;
             font-size: 14px;
             font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         /* ギャラリー用CSS */
         .food-gallery {
@@ -101,6 +132,7 @@
             overflow: hidden;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         .food-card img {
             width: 100%;
@@ -111,6 +143,7 @@
             font-size: 11px;
             color: #6c757d;
             padding: 6px 4px;
+            transition: color 0.3s ease;
         }
         
         /* 作ったアプリ（リスト風） */
@@ -120,6 +153,7 @@
         .app-item {
             padding: 12px 0;
             border-bottom: 1px solid #edf2f7;
+            transition: border-color 0.3s ease;
         }
         .app-item:last-child {
             border-bottom: none;
@@ -128,11 +162,13 @@
             font-weight: bold;
             color: #333;
             font-size: 15px;
+            transition: color 0.3s ease;
         }
         .app-desc {
             font-size: 13px;
             color: #6c757d;
             margin-top: 2px;
+            transition: color 0.3s ease;
         }
 
         /* デモ・メディアセクション（五目並べ用） */
@@ -145,6 +181,7 @@
             border: 1px solid #e1e4e6;
             border-radius: 8px;
             margin-bottom: 15px;
+            transition: border-color 0.3s ease;
         }
         .github-btn {
             display: inline-block;
@@ -155,7 +192,7 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: background-color 0.2s ease;
+            transition: background-color 0.2s ease, border-color 0.3s ease;
         }
         .github-btn:hover {
             background-color: #000000;
@@ -169,6 +206,7 @@
             border-radius: 8px;
             font-size: 14px;
             color: #495057;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         /* フッター */
@@ -177,6 +215,105 @@
             margin-top: 40px;
             font-size: 12px;
             color: #adb5bd;
+            transition: color 0.3s ease;
+        }
+
+        /* TOPに戻るボタン */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 44px;
+            height: 44px;
+            background-color: #4a90e2;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s ease, transform 0.2s ease;
+            z-index: 100;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: #357abd;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================
+           ダークモード用のCSSスタイル
+        ========================================== */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode .container {
+            background-color: #1e1e1e;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        body.dark-mode h1,
+        body.dark-mode h2 {
+            color: #64b5f6;
+        }
+        body.dark-mode .tagline {
+            color: #a0a0a0;
+        }
+        body.dark-mode .theme-toggle-btn {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        body.dark-mode .theme-toggle-btn:hover {
+            background-color: #444444;
+        }
+        body.dark-mode .tag {
+            background-color: #263849;
+            color: #90caf9;
+        }
+        body.dark-mode .food-card {
+            background-color: #252525;
+            border-color: #333333;
+        }
+        body.dark-mode .food-caption {
+            color: #b0b0b0;
+        }
+        body.dark-mode .app-item {
+            border-bottom-color: #333333;
+        }
+        body.dark-mode .app-name {
+            color: #ffffff;
+        }
+        body.dark-mode .app-desc {
+            color: #b0b0b0;
+        }
+        body.dark-mode .demo-img {
+            border-color: #333333;
+        }
+        body.dark-mode .github-btn {
+            background: #333333;
+            border: 1px solid #444444;
+        }
+        body.dark-mode .github-btn:hover {
+            background: #444444;
+        }
+        body.dark-mode .message-box {
+            background-color: #252525;
+            border-color: #333333;
+            color: #d1d5db;
+        }
+        body.dark-mode footer {
+            color: #777777;
+        }
+        body.dark-mode .avatar {
+            background-color: #2a2a2a;
         }
 
         /* スマホ対応の微調整 */
@@ -190,6 +327,16 @@
             h1 {
                 font-size: 21px;
             }
+            .theme-toggle-btn {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 15px;
+            }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -197,6 +344,7 @@
 
     <div class="container">
         <header>
+            <button id="themeToggleBtn" class="theme-toggle-btn">🌙 ダーク</button>
             <div class="avatar">
                 <img src="profile.jpg" alt="和内聖志のプロフィール写真">
             </div>
@@ -222,7 +370,7 @@
                 <div class="food-card">
                     <img src="ramen2.jpg" alt="豚骨ラーメン">
                     <p class="food-caption">こってり豚骨ラーメン（東京）</p>
-               </div>
+                </div>
                 <div class="food-card">
                     <img src="ramen3.jpg" alt="激辛ラーメン">
                     <p class="food-caption">辛さ5倍！激辛ラーメン（東京）</p>
@@ -275,5 +423,32 @@
         </footer>
     </div>
 
+    <!-- TOPに戻るボタン -->
+    <a href="#" id="backToTopBtn" class="back-to-top" aria-label="ページ上部へ戻る">↑</a>
+
+    <!-- JavaScript処理 -->
+    <script>
+        // 1. ダークモード切替処理
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeToggleBtn.textContent = '☀️ ライト';
+            } else {
+                themeToggleBtn.textContent = '🌙 ダーク';
+            }
+        });
+
+        // 2. TOPに戻るボタンの表示・非表示コントロール
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>

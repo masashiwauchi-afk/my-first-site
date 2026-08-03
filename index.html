@@ -154,7 +154,16 @@
             overflow: hidden;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .food-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .food-card a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
         .food-card img {
             width: 100%;
@@ -386,16 +395,22 @@
             <!-- 好きなものセクション内にギャラリーを追加 -->
             <div class="food-gallery">
                 <div class="food-card">
-                    <img src="ramen1.jpg" alt="家系ラーメン">
-                    <p class="food-caption">家系野菜ラーメン（横浜）</p>
+                    <a href="http://uemuraya.web.fc2.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="ramen1.jpg" alt="家系ラーメン">
+                        <p class="food-caption">家系野菜ラーメン（横浜）</p>
+                    </a>
                 </div>
                 <div class="food-card">
-                    <img src="ramen2.jpg" alt="豚骨ラーメン">
-                    <p class="food-caption">こってり豚骨ラーメン（東京）</p>
+                    <a href="https://ichiran.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="ramen2.jpg" alt="豚骨ラーメン">
+                        <p class="food-caption">こってり豚骨ラーメン（東京）</p>
+                    </a>
                 </div>
                 <div class="food-card">
-                    <img src="ramen3.jpg" alt="激辛ラーメン">
-                    <p class="food-caption">辛さ5倍！激辛ラーメン（東京）</p>
+                    <a href="https://www.moukotanmen-nakamoto.com/" target="_blank" rel="noopener noreferrer">
+                        <img src="ramen3.jpg" alt="激辛ラーメン">
+                        <p class="food-caption">辛さ5倍！激辛ラーメン（東京）</p>
+                    </a>
                 </div>
             </div>
             
